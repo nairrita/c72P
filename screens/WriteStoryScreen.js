@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity,KeyboardAvoidingView,ToastAndroid,Alert } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import {Header} from 'react-native-elements';
 import db from '../config';
@@ -28,11 +28,14 @@ export default class WriteStoryScreen extends React.Component {
             author: ' ',
             storyText: ' '
         })
+
+        Alert.alert("Your story has been submitted")
+        //ToastAndroid.show("Your story has been submitted",ToastAndroid.SHORT)
     }
 
     render(){
         return(
-            <View style={styles.container}>
+            <KeyboardAvoidingView style={styles.container} behavior = "padding" enabled>
                 <Header 
                     backgroundColor = {'pink'}
                     centerComponent = {{
@@ -81,7 +84,7 @@ export default class WriteStoryScreen extends React.Component {
                    >
                     <Text style={styles.buttonText}>Submit</Text>
                 </TouchableOpacity>
-            </View>
+            </KeyboardAvoidingView>
         );
     }
 }
